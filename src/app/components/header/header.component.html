@@ -1,0 +1,43 @@
+<header class="header">
+  <div class="header-content">
+    <div class="logo-section">
+      <a routerLink="">
+        <img src="logo.png" alt="Logo" class="logo" />
+      </a>
+      <a routerLink="" class="title">Movies</a>
+    </div>
+    <div class="account-section">
+      <div class="dropdown">
+        <button class="account-button">
+          <span class="account-text"> {{ selectedText }} </span>
+          <span class="account-icon"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a (click)="updateText('My Account')" routerLink="account"
+              >My Account</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="updateText('Home')"
+              routerLink=""
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="updateText('My favorite')"
+              routerLink="favorite"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >My favorite</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

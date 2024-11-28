@@ -1,0 +1,100 @@
+<p *ngIf="!isFetching && !error && !movie" class="fallback-text">
+  No movie available at the moment.
+</p>
+
+<div
+  class="movie-container fade-in"
+  [ngStyle]="{ 'background-image': 'url(' + backgroundUrl + ')' }"
+>
+  <div class="movie-header">
+    <button class="back-pc-btn" (click)="getPreviousMovie()">
+      <span class="material-symbols-outlined flip-horizontal icon">
+        expand_circle_right
+      </span>
+      <span *ngIf="showBackButton; else prevPc">Back to list</span>
+      <ng-template #prevPc>
+        <span>Previous</span>
+      </ng-template>
+    </button>
+
+    <button *ngIf="showNextButton" class="next-pc-btn" (click)="getNextMovie()">
+      <span *ngIf="isLastMovie; else nextPc">Back to list</span>
+      <ng-template #nextPc>
+        <span>Next Movie</span>
+      </ng-template>
+      <span class="material-symbols-outlined icon">expand_circle_right</span>
+    </button>
+
+    <button class="back-tab-btn" (click)="getPreviousMovie()">
+      <span class="material-symbols-outlined icon"> chevron_left </span>
+      <span *ngIf="showBackButton; else prevTab">Back</span>
+      <ng-template #prevTab>
+        <span>Prev</span>
+      </ng-template>
+    </button>
+
+    <button
+      *ngIf="showNextButton"
+      class="next-tab-btn"
+      (click)="getNextMovie()"
+    >
+      <span *ngIf="isLastMovie; else nextTab">Back</span>
+      <ng-template #nextTab>
+        <span>Next</span>
+      </ng-template>
+      <span class="material-symbols-outlined icon"> chevron_right </span>
+    </button>
+  </div>
+  <div *ngIf="isFetching || error; else movieContent">
+    <p *ngIf="isFetching && !error" class="fallback-text">Fetching...</p>
+    <p *ngIf="error" class="fallback-text">{{ error }}</p>
+  </div>
+
+  <ng-template #movieContent>
+    <div class="movie-details">
+      <img
+        class="movie-poster fade-in"
+        [src]="posterUrl"
+        [alt]="movie?.title"
+      />
+      <app-button
+        class="custom-button"
+        customClass="but"
+        [useContent]="true"
+        (onClick)="addToFavorite()"
+      >
+        <span *ngIf="!isMovieInList; else unfavorite" class="button-title"
+          >Add to favorite</span
+        >
+        <ng-template #unfavorite>
+          <span class="button-title">Unfavorite</span>
+        </ng-template>
+
+        <span
+          *ngIf="!isMovieInList; else unfavoriteIcon"
+          class="material-icons-outlined button-icon"
+          style="font-size: 32px"
+        >
+          star_border
+        </span>
+        <ng-template #unfavoriteIcon>
+          <span
+            class="material-icons-outlined button-icon"
+            style="font-size: 32px"
+          >
+            star
+          </span>
+        </ng-template>
+      </app-button>
+      <h1 class="movie-title">{{ movie?.original_title }}</h1>
+      <p class="score">Score: {{ movie?.vote_average | number : "1.0-1" }}</p>
+      <p class="rating">Rating: {{ movie?.adult ? "R" : "PG" }}</p>
+      <p class="release">
+        Release Date: {{ movie?.release_date | date : "longDate" }}
+      </p>
+      <p *ngIf="movie?.overview" class="movie-description">
+        {{ movie?.overview }}
+      </p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,8 @@
+<button class="button" [ngClass]="customClass" (click)="handleClick($event)">
+  <ng-container *ngIf="useContent; else labelTemplate">
+    <ng-content></ng-content>
+  </ng-container>
+  <ng-template #labelTemplate>
+    {{ label }}
+  </ng-template>
+</button>

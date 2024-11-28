@@ -1,0 +1,60 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-first button,
+.pagination-previous button,
+.pagination-next button,
+.pagination-last button,
+button {
+  background-color: $main-bg;
+  color: $secondary-color;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ced4da;
+  border-right: none;
+}
+
+.pagination-first button:hover,
+.pagination-previous button:hover,
+.pagination-next button:hover,
+.pagination-last button:hover,
+button:hover {
+  background-color: #ced4da;
+}
+
+.pagination-last button {
+  border-right: 1px solid #ced4da;
+}
+
+.current {
+  padding: 5px 10px;
+  border: 1px solid #ced4da;
+  border-right: none;
+  font-weight: bold;
+}
+
+.last-page {
+  border-right: 1px solid #ced4da;
+}
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+span {
+  padding: 5px;
+  color: $secondary-color;
+}
+
+.pagination-first button,
+.pagination-last button {
+  color: #28a745;
+}

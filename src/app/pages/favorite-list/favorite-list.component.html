@@ -1,0 +1,11 @@
+<app-container>
+  <h2>My favorite</h2>
+  <div class="movies-container">
+    <div *ngFor="let movie of movies" class="movie-item">
+      <app-favorite-item
+        [movie]="movie"
+        (onRemove)="removeMovie(movie)"
+      ></app-favorite-item>
+    </div>
+  </div>
+</app-container>

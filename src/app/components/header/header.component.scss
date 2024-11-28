@@ -1,0 +1,134 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.header {
+  background-color: $header-bg;
+  padding: 1rem;
+
+  @include mobile {
+    padding: 1rem;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+
+        @include mobile {
+          margin-right: 5px;
+        }
+      }
+
+      .title {
+        color: $primary-color;
+        font-size: 1.5rem;
+        text-decoration: none;
+
+        @include mobile {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .account-section {
+      .dropdown {
+        position: relative;
+
+        .account-button {
+          display: flex;
+          align-items: center;
+          background: none;
+          border: 1px solid $button-border;
+          border-radius: 5px;
+          padding: 5px 15px;
+          cursor: pointer;
+
+          @include mobile {
+            padding: 15px;
+          }
+
+          .account-text {
+            color: $primary-color;
+            font-size: 1rem;
+            margin-right: 15px;
+
+            @include mobile {
+              display: none;
+            }
+          }
+
+          .account-icon {
+            width: 10px;
+            height: 10px;
+            border: none;
+            position: relative;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 7px;
+              height: 7px;
+              border: solid $primary-color;
+              border-width: 0 2px 2px 0;
+              transform: translate(-50%, -50%) rotate(45deg);
+            }
+          }
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          min-width: 120px;
+          display: none;
+          background-color: $main-bg;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+          list-style: none;
+          z-index: 2;
+
+          .active-link {
+            font-weight: bold;
+            background-color: rgba(192, 190, 190, 0.5);
+          }
+
+          li {
+            a {
+              display: block;
+              padding: 10px 15px;
+              color: #333;
+              text-decoration: none;
+
+              &:hover {
+                background-color: rgba(192, 190, 190, 0.5);
+              }
+            }
+          }
+        }
+
+        &:focus-within .dropdown-menu {
+          display: block;
+        }
+      }
+    }
+  }
+}

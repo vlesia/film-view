@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.button {
+  padding: 8px;
+  font-size: 1rem;
+  color: whitesmoke;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  @include tablet {
+    padding: 0;
+    border-color: whitesmoke;
+  }
+
+  &.secondary {
+    padding: 4px;
+    color: #666565;
+    border-color: $secondary-color;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

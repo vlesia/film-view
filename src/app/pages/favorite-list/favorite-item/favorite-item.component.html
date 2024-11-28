@@ -1,0 +1,19 @@
+<div class="card">
+  <img
+    class="card-img"
+    [src]="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
+    [alt]="movie.title"
+  />
+  <div class="card-content">
+    <div class="card-header">
+      <h1 class="card-title">{{ movie.original_title }}</h1>
+      <app-button
+          class="custom-button"
+          customClass="secondary"
+          label="Unfavorite"
+          (onClick)="removeFavorite()"
+        ></app-button>
+    </div>
+    <p class="card-description">{{ movie.overview }}</p>
+  </div>
+</div>

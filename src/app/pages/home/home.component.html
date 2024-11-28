@@ -1,0 +1,41 @@
+<app-container>
+  <h2>Latest Releases</h2>
+  <p *ngIf="isFetching && !error" class="fallback-text">Fetching...</p>
+  <p *ngIf="error" class="fallback-text">{{ error }}</p>
+  <p *ngIf="!isFetching && !error && movies.length === 0" class="fallback-text">
+    No movies available at the moment.
+  </p>
+
+  <div *ngIf="movies.length > 0" class="movies-grid">
+    <div
+      *ngFor="
+        let movie of movies
+          | paginate
+            : {
+                itemsPerPage: 20,
+                currentPage: p,
+                totalItems: totalItems
+              }
+      "
+      class="movies"
+      (click)="navigateToMovieDetails(movie.id)"
+    >
+      <img
+        class="movie-poster fade-in"
+        [src]="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
+        [alt]="movie.title"
+      />
+    </div>
+  </div>
+  <app-custom-pagination
+    [style.display]="movies.length > 0 ? 'block' : 'none'"
+    (pageChange)="pageChanged($event)"
+    (pageBoundsCorrection)="pageChanged($event)"
+    firstLabel="First"
+    previousLabel="Prev"
+    nextLabel="Next"
+    lastLabel="Last"
+    [maxSize]="2"
+  >
+  </app-custom-pagination>
+</app-container>
