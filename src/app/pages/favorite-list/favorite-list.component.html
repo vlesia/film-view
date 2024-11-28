@@ -1,5 +1,6 @@
 <app-container>
   <h2>My favorite</h2>
+  <p *ngIf="!movies.length" class="fallback-text">No favorite movies found.</p>
   <div class="movies-container">
     <div *ngFor="let movie of movies" class="movie-item">
       <app-favorite-item

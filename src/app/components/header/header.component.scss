@@ -44,6 +44,10 @@
       .dropdown {
         position: relative;
 
+        &:hover .dropdown-menu,
+        &:focus .dropdown-menu {
+          display: block;
+        }
         .account-button {
           display: flex;
           align-items: center;
@@ -123,10 +127,6 @@
               }
             }
           }
-        }
-
-        &:focus-within .dropdown-menu {
-          display: block;
         }
       }
     }

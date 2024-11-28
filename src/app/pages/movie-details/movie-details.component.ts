@@ -44,7 +44,7 @@ export class MovieDetailsComponent implements OnInit {
       .getMovieById(this.movieId)
       .subscribe({
         next: (val) => {
-          this.movie = val;
+         this.movie = val;
           this.error = '';
         },
         error: (err: Error) => {
@@ -62,7 +62,7 @@ export class MovieDetailsComponent implements OnInit {
     return this.movies[this.movies.length - 1].id === this.movie?.id;
   }
   get isFirstMovie(): boolean {
-    return this.movies[0].id === this.movie?.id;
+    return this.movies[0]?.id === this.movie?.id;
   }
 
   get isMovieInList(): boolean {
