@@ -8,7 +8,7 @@ import { Movie, MoviesResponse } from '../models/movie.model';
   providedIn: 'root',
 })
 export class MoviesService {
-  private URL = 'http://api.themoviedb.org/3/movie/';
+  private URL = 'https://api.themoviedb.org/3/movie/';
   private API_KEY = 'ebea8cfca72fdff8d2624ad7bbf78e4c';
 
   private httpClient = inject(HttpClient);
